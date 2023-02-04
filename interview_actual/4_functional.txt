@@ -1,0 +1,48 @@
+Uniqueness: 
+
+// All of the elements in a string are unique. Not allowed to convert to array or use array methods. Must return a boolean. 
+
+// Input: "hello"  // "l" is present twice in the string
+// Output: "false" 
+
+// Input: "copyright" //no characters are repeated
+// Output: "true"
+
+function IsUnique (string) {  
+  let unique = true;
+  for (i=0; i<string.length; i++) {  
+    for (index = i+1; index<string.length; index ++) {   
+      if (string[i] === string [index]) { 
+        unique = false;    
+      }
+    }
+  }
+  return unique; 
+}
+
+
+//recursive solution 
+
+function Recursive (string, i) {
+  if (i=== string.length -1) {
+    return true;
+  } else if (InnerRecursive(string, i, i+1) === false) {
+    return false;    
+  } else {
+    return Recursive(string, i+1);
+  }  
+}
+
+function InnerRecursive (string, i, index) {
+    if (index === string.length -1) {
+      return true;
+    } else if (string[i] === string[index]) {
+      return false;
+    } else {
+      return InnerRecursive (string, i, index+1)
+    }
+  }
+
+console.log(Recursive("hello", 0))
+console.log(Recursive("copyright", 0))
+
